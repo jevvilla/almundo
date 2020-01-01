@@ -1,6 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "npx tsc && lint-staged",
-    "pre-push": "npx tsc && lint-staged"
+    "pre-commit": "yarn lint && lint-staged",
+    "pre-push": "yarn lint && lint-staged"
   }
 }
