@@ -1,16 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
 
+import * as routes from '../../../src/navigation/routes';
+import {Hotel} from '../../../src/common/intefaces';
+import {colors} from '../../../src/common/styles';
 import {HotelList} from './components';
-import * as routes from '../../navigation/routes';
 import {styles} from './styles';
 
 interface Props {
   navigation: NavigationStackProp;
 }
-
-type Fun = () => void;
 
 const Home: React.FC<Props> = props => {
   const [hotels, setHotels] = React.useState([]);
@@ -33,14 +33,15 @@ const Home: React.FC<Props> = props => {
     }
   };
 
-  const navigateToDetails: Fun = () => {
+  const navigateToDetails = (hotel: Hotel) => {
     const {navigation} = props;
 
-    navigation.navigate(routes.DETAILS);
+    navigation.navigate(routes.DETAILS, {hotel});
   };
 
   return (
     <View style={styles.container}>
+      {fetching && <ActivityIndicator color={colors.primary} size="small" />}
       <HotelList onCardPress={navigateToDetails} data={hotels} />
     </View>
   );
