@@ -2,6 +2,7 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import {Details, Home} from '../screens';
+import {defaultHeader} from '../common/styles';
 import * as routes from './routes';
 
 const Navigator = createStackNavigator(
@@ -15,6 +16,9 @@ const Navigator = createStackNavigator(
   },
   {
     headerLayoutPreset: 'center',
+    defaultNavigationOptions: {
+      headerStyle: defaultHeader,
+    },
   },
 );
 
