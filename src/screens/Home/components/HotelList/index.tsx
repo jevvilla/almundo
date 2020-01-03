@@ -7,7 +7,7 @@ import HotelCard from '../HotelCard';
 import {styles} from './styles';
 
 interface Props {
-  onCardPress: () => void;
+  onCardPress: (hotel: Hotel) => void;
   data: Hotel[];
 }
 
@@ -15,7 +15,7 @@ const HotelList: React.FC<Props> = ({onCardPress, data}) => {
   const keyExtractor = (item: Hotel) => item.id;
 
   const renderItem = ({item}: {item: Hotel}) => {
-    return <HotelCard onPress={onCardPress} style={styles.card} hotel={item} />;
+    return <HotelCard onPress={() => onCardPress(item)} style={styles.card} hotel={item} />;
   };
 
   return (

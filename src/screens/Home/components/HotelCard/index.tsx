@@ -9,7 +9,7 @@ import {styles} from './styles';
 
 interface Props {
   onPress: () => void;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   hotel: Hotel;
 }
 
