@@ -41,7 +41,5 @@ export const defaultHeader = {
 
 export const hearderTitle = {
   color: colors.primary,
-  fontWeight: 'bold',
-  fontSize: sizes.h2,
-  opacity: 0.8,
+  fontSize: sizes.h3,
 };
