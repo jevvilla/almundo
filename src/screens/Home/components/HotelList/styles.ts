@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {sizes} from '../../../../common/styles';
+import {sizes} from 'src/common/styles';
 
 export const styles = StyleSheet.create({
   flatlist: {paddingHorizontal: sizes.base * 2},

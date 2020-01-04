@@ -2,9 +2,9 @@ import React from 'react';
 import {Image, Text, View, TouchableOpacity, ViewStyle, StyleProp} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import {Hotel} from '../../../../common/intefaces';
-import {colors} from '../../../../common/styles';
-import * as strings from '../../../../common/strings';
+import {Hotel} from 'src/common/intefaces';
+import {colors} from 'src/common/styles';
+import * as strings from 'src/common/strings';
 import {styles} from './styles';
 
 interface Props {

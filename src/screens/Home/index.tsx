@@ -2,10 +2,10 @@ import React from 'react';
 import {View, ActivityIndicator, Image} from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
 
-import * as routes from '../../../src/navigation/routes';
-import {Hotel} from '../../../src/common/intefaces';
-import {colors} from '../../../src/common/styles';
-import logo from '../../../assets/images/logo.png';
+import * as routes from 'src/navigation/routes';
+import {Hotel} from 'src/common/intefaces';
+import {colors} from 'src/common/styles';
+import logo from 'assets/images/logo.png';
 import {HotelList} from './components';
 import {styles} from './styles';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {FlatList} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 
-import {Hotel} from '../../../../common/intefaces';
+import {Hotel} from 'src/common/intefaces';
 import HotelCard from '../HotelCard';
 import {styles} from './styles';
 

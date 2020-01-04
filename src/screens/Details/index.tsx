@@ -2,10 +2,10 @@ import React from 'react';
 import {View} from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
 
-import {IconButton, Map} from '../../common/components';
+import {IconButton, Map} from 'src/common/components';
+import {colors} from 'src/common/styles';
 import {Carousel} from './components';
 import {styles} from './styles';
-import {colors} from '../../../src/common/styles';
 
 interface Details {
   id: string;
