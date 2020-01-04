@@ -1,23 +1,70 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {NavigationStackProp} from 'react-navigation-stack';
+import {View} from 'react-native';
+import {NavigationStackScreenComponent} from 'react-navigation-stack';
 
+import {IconButton, Map} from '../../common/components';
 import {Carousel} from './components';
-import {Hotel} from '../../common/intefaces';
 import {styles} from './styles';
+import {colors} from '../../../src/common/styles';
 
-interface Props {
-  navigation: NavigationStackProp<Hotel>;
+interface Details {
+  id: string;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
 }
 
-const Details: React.FC<Props> = ({navigation}) => {
-  const {images} = navigation.state.params?.hotel;
+const Details: NavigationStackScreenComponent = ({navigation}) => {
+  const [details, setDetails] = React.useState<Details>();
+  const {images, id, name} = navigation.state.params?.hotel;
+  let location = {latitude: 0, longitude: 0};
+
+  React.useEffect(() => {
+    setNavigationParams();
+    fetchHotelDetails();
+  }, []);
+
+  const fetchHotelDetails = async () => {
+    const request = await fetch(`http://192.168.1.63:3000/details/${id}`);
+    const data = await request.json();
+    setDetails(data);
+  };
+
+  const setNavigationParams = () => {
+    navigation.setParams({
+      name,
+    });
+  };
+
+  if (details) {
+    location = details.location;
+  }
 
   return (
     <View style={styles.container}>
-      <Carousel images={images} />
+      <View>
+        <Carousel images={images} />
+      </View>
+      <Map location={location} />
     </View>
   );
+};
+
+Details.navigationOptions = ({navigation}) => {
+  const name = navigation.getParam('name');
+
+  return {
+    headerTitle: name,
+    headerLeft: (
+      <IconButton
+        name="arrowleft"
+        color={colors.primary}
+        size={24}
+        onPress={() => navigation.goBack()}
+      />
+    ),
+  };
 };
 
 export default Details;
