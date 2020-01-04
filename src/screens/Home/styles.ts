@@ -11,4 +11,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerImage: {
+    width: 150,
+    height: 150,
+  },
 });
