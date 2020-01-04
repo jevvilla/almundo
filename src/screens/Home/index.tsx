@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, ActivityIndicator, Image} from 'react-native';
-import {NavigationStackProp, NavigationStackScreenComponent} from 'react-navigation-stack';
+import {NavigationStackScreenComponent} from 'react-navigation-stack';
 
 import * as routes from '../../../src/navigation/routes';
 import {Hotel} from '../../../src/common/intefaces';
@@ -9,11 +9,7 @@ import logo from '../../../assets/images/logo.png';
 import {HotelList} from './components';
 import {styles} from './styles';
 
-interface Props {
-  navigation: NavigationStackProp;
-}
-
-const Home: NavigationStackScreenComponent<Props> = props => {
+const Home: NavigationStackScreenComponent = props => {
   const [hotels, setHotels] = React.useState([]);
   const [fetching, setFetching] = React.useState(false);
 
