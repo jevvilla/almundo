@@ -1,9 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import {IconButton, Map} from 'src/common/components';
 import {colors} from 'src/common/styles';
+import {getHotelDetails} from 'src/api';
 import {Carousel} from './components';
 import {styles} from './styles';
 
@@ -13,12 +15,16 @@ interface Details {
     latitude: number;
     longitude: number;
   };
+  country: string;
+  city: string;
 }
 
 const Details: NavigationStackScreenComponent = ({navigation}) => {
   const [details, setDetails] = React.useState<Details>();
-  const {images, id, name} = navigation.state.params?.hotel;
+  const {images, _id, name, stars} = navigation.state.params?.hotel;
   let location = {latitude: 0, longitude: 0};
+  let country = '';
+  let city = '';
 
   React.useEffect(() => {
     setNavigationParams();
@@ -26,9 +32,12 @@ const Details: NavigationStackScreenComponent = ({navigation}) => {
   }, []);
 
   const fetchHotelDetails = async () => {
-    const request = await fetch(`http://192.168.1.63:3000/details/${id}`);
-    const data = await request.json();
-    setDetails(data);
+    try {
+      const data = await getHotelDetails(_id);
+      setDetails(data);
+    } catch (error) {
+      // TODO: implement catch error component
+    }
   };
 
   const setNavigationParams = () => {
@@ -39,6 +48,8 @@ const Details: NavigationStackScreenComponent = ({navigation}) => {
 
   if (details) {
     location = details.location;
+    country = details.country;
+    city = details.city;
   }
 
   return (
@@ -46,7 +57,19 @@ const Details: NavigationStackScreenComponent = ({navigation}) => {
       <View>
         <Carousel images={images} />
       </View>
-      <Map location={location} />
+      <View style={styles.infoContainer}>
+        <Text style={styles.title}>{name}</Text>
+        <View style={styles.row}>
+          {Array(...Array(stars)).map((_, index) => (
+            <Icon key={index} name="star" size={22} color={colors.yellow} />
+          ))}
+        </View>
+        <View style={styles.row}>
+          <Icon name="enviroment" size={22} color={colors.red} />
+          <Text style={styles.location}>{`${city}, ${country}`}</Text>
+        </View>
+        <Map location={location} />
+      </View>
     </View>
   );
 };
