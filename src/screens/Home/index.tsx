@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, ActivityIndicator, Image} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
+import FastImage from 'react-native-fast-image';
 
 import * as routes from 'src/navigation/routes';
 import {getHotels} from 'src/api';
@@ -45,7 +46,7 @@ const Home: NavigationStackScreenComponent = props => {
 };
 
 Home.navigationOptions = {
-  headerTitle: <Image source={logo} resizeMode="contain" style={styles.headerImage} />,
+  headerTitle: <FastImage source={logo} resizeMode="contain" style={styles.headerImage} />,
 };
 
 export default Home;

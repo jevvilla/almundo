@@ -1,6 +1,7 @@
 import React from 'react';
-import {Image, Text, View, TouchableOpacity, ViewStyle, StyleProp} from 'react-native';
+import {Text, View, TouchableOpacity, ViewStyle, StyleProp} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import FastImage from 'react-native-fast-image';
 
 import {Hotel} from 'src/common/intefaces';
 import {colors} from 'src/common/styles';
@@ -18,7 +19,7 @@ const HotelCard: React.FC<Props> = ({onPress, style, hotel}) => {
 
   return (
     <TouchableOpacity style={[styles.container, style]} activeOpacity={0.5} onPress={onPress}>
-      <Image
+      <FastImage
         style={styles.thumbnail}
         source={{
           uri: images[0],
