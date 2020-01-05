@@ -12,7 +12,7 @@ interface Props {
 }
 
 const HotelList: React.FC<Props> = ({onCardPress, data}) => {
-  const keyExtractor = (item: Hotel) => item.id;
+  const keyExtractor = (item: Hotel) => item._id;
 
   const renderItem = ({item}: {item: Hotel}) => {
     return <HotelCard onPress={() => onCardPress(item)} style={styles.card} hotel={item} />;
