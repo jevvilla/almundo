@@ -3,6 +3,7 @@ import {View, ActivityIndicator, Image} from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
 
 import * as routes from 'src/navigation/routes';
+import {getHotels} from 'src/api';
 import {Hotel} from 'src/common/intefaces';
 import {colors} from 'src/common/styles';
 import logo from 'assets/images/logo.png';
@@ -14,15 +15,14 @@ const Home: NavigationStackScreenComponent = props => {
   const [fetching, setFetching] = React.useState(false);
 
   React.useEffect(() => {
-    getHotels();
+    fetchHotels();
   }, []);
 
-  const getHotels = async () => {
+  const fetchHotels = async () => {
+    setFetching(true);
     try {
-      setFetching(true);
-      const request = await fetch('http://192.168.1.63:3000/hotels');
-      const result = await request.json();
-      setHotels(result);
+      const data = await getHotels();
+      setHotels(data);
     } catch (err) {
       // TODO: implement catch error component
     } finally {
