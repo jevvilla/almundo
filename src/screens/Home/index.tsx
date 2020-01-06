@@ -65,6 +65,7 @@ const Home: NavigationStackScreenComponent = props => {
             placeholder={strings.SEARCH_PLACEHOLDER}
             onChangeText={onChangeTextInputHandler}
             autoCapitalize="none"
+            autoCorrect={false}
           />
         </View>
       )}
