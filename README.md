@@ -35,9 +35,8 @@ git clone https://github.com/jevvilla/almundo.git
 
 Then go to the project root (project folder), and run the following commands to get the app running:
 
-- `git checkout dev` to be placed in the correct branch.
 - `yarn` or `npm i` - Install project dependencies.
-- NOTE: don't forget install Pods, from the root path run `cd ios && pod install`.
+- NOTE: don't forget install Pods, from the root path run `cd ios && pod install`. Then return to the root folder.
 - `npx react-native run-ios` - Run the app locally. By default this will run an iPhone X simulator.
 - `npx react-native run-android` - install to the single Android device connected (if more than one are connected, you must specify the device with `—deviceId` which can be gotten from `adb devices`).
 
